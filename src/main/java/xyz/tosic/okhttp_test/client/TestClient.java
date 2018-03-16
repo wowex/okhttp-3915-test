@@ -23,7 +23,7 @@ public class TestClient {
 
     for (int j = 0; j < 100000; j++) {
       if (j % 1000 == 0) {
-        System.out.println(j);
+        logger.info("Finished itteration [{}]", j);
       }
 
       Request request = new Request.Builder().url("https://127.0.0.1:8443/").build();
@@ -38,6 +38,7 @@ public class TestClient {
         call.cancel();
       } catch (IOException ex) {
         logger.error("Error occurred on iteration [{}]", j, ex);
+        System.exit(-1);
       }
     }
   }
